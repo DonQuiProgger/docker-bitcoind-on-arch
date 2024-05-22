@@ -1,0 +1,28 @@
+# this file is for testing the local Dockerfile
+services:
+  bitcoind:
+    image: bitcoind
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # bitcoin data directory
+      - ./bitcoin:/home/bitcoind/.bitcoin
+    environment:
+      # set here write permissions for the right user and group
+      - UID=60503
+      - GID=60503
+    ports: 
+      - "8332:8332" 
+      - "8333:8333" 
+      - "18332:18332" 
+      - "18333:18333" 
+      - "18443:18443" 
+      - "18444:18444" 
+      - "38333:38333" 
+      - "38332:38332"
+    restart: unless-stopped
+    command:
+      # required to be able to connect from outside
+      - -rpcbind=0.0.0.0
+      - -rpcallowip=0.0.0.0/0
