@@ -2,14 +2,50 @@
   
 <b>NOTE: This is currently work in progress.</b>  
   
-Containerized Bitcoin-core on archlinux for amd64,armv7,arm64.
+Containerized Bitcoin-core with archlinux. 
+  
+Supported architectures: amd64, arm32v7, arm64v8.
 
 ## Running the images
 
-The images are on Docker Hub. Use the convenient docker run:
-
+The images are on Docker Hub.
 ```
-docker run --rm -ti donquiprogger/bitcoin-core:latest
+docker run --rm --name bitcoind -ti donquiprogger/bitcoin-core:latest
+```
+
+To communicate using rpc
+```
+docker exec -u bitcoind bitcoind bitcoin-cli -getinfo
+```
+
+### Docker compose
+
+Example config
+```
+services:
+  bitcoind:
+    image: donquiprogger/bitcoin-core
+    volumes:
+      # bitcoin data directory
+      - ./bitcoin:/home/bitcoind/.bitcoin
+    environment:
+      # set here write permissions for the right user and group
+      - UID=1000
+      - GID=1000
+    ports:
+      - "8332:8332"
+      - "8333:8333"
+      - "18332:18332"
+      - "18333:18333"
+      - "18443:18443"
+      - "18444:18444"
+      - "38333:38333"
+      - "38332:38332"
+    restart: unless-stopped
+    command:
+      # pass arguments
+      - -rpcbind=0.0.0.0
+      - -rpcallowip=0.0.0.0/0
 ```
 
 ## Building it yourself
