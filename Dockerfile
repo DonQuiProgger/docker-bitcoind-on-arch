@@ -1,4 +1,4 @@
-FROM archlinux:latest
+FROM lopsided/archlinux
 
 ENV UID=1000
 ENV GID=1000
