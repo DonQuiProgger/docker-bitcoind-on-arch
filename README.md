@@ -8,29 +8,17 @@ Containerized Bitcoin-core on archlinux for amd64,armv7,arm64.
 
 The images are on Docker Hub. Use the convenient docker run:
 
-For arm
 ```
-docker run --rm -ti donquiprogger/bitcoin-core:arm
-```
-
-For amd64
-```
-docker run --rm -ti donquiprogger/bitcoin-core:amd64
+docker run --rm -ti donquiprogger/bitcoin-core:latest
 ```
 
 ## Building it yourself
 
-You can build it either using docker for arm
-```
-docker buildx build -f Dockerfile.arm --platform linux/arm/v7,linux/arm64 .
-```
-
-or for amd64
+You can build it using the provided build script
 ```
 docker buildx build -f Dockerfile .
 ```
-
-or using docker compose and update the Dockerfile used for building inside <b>docker-compose.yml</b>
+or using docker compose
 ```
 docker compose build . && docker compose up
 ```
@@ -41,7 +29,7 @@ Ideas have been taken from many places.
 
 * https://github.com/lopsided98/archlinux  
     - Archlinux on arm  
-    - Frequent builds using github actions
+    - Build setup
 * https://github.com/ruimarinho/docker-bitcoin-core   
     - How to setup bitcoin core inside a docker
 * https://github.com/archlinux/archlinux-docker

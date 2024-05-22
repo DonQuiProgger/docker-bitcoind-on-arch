@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -eu 
+
+ORG=donquiprogger
+IMAGE=bitcoin-core
+
+# this creates only one tag and thats it
+docker buildx build -f Dockerfile -t ${ORG}/${IMAGE} --platform linux/arm/v7,linux/arm64/v8,linux/amd64 --push .
