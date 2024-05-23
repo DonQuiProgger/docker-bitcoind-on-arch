@@ -6,6 +6,16 @@ Containerized Bitcoin-core with archlinux.
   
 Supported architectures: amd64, arm32v7, arm64v8.
 
+## Tags
+
+|  Tag   |    Description     |
+|:------:|:-------------------|
+| latest  | multiarch build |
+| amd64   | platform specific build |
+| arm64v8 | platform specific build |
+| armv7   | platform specific build |
+
+
 ## Running the images
 
 The images are on Docker Hub.
