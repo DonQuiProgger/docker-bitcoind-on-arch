@@ -4,7 +4,7 @@
   
 Containerized Bitcoin-core with archlinux. 
   
-Supported architectures: amd64, arm32v7, arm64v8.
+Supported architectures: amd64, arm64v8, armv7.
 
 ## Tags
 
@@ -20,7 +20,7 @@ Supported architectures: amd64, arm32v7, arm64v8.
 
 The images are on Docker Hub.
 ```
-docker run --rm --name bitcoind -ti donquiprogger/bitcoin-core:latest
+docker run --name bitcoind -ti donquiprogger/bitcoin-core:latest
 ```
 
 To communicate using rpc
@@ -39,7 +39,7 @@ services:
       # bitcoin data directory
       - ./bitcoin:/home/bitcoind/.bitcoin
     environment:
-      # set here write permissions for the right user and group
+      # permissions for the bitcoin data directory
       - UID=1000
       - GID=1000
     ports:
@@ -66,7 +66,7 @@ docker buildx build -f Dockerfile .
 ```
 or using docker compose
 ```
-docker compose build . && docker compose up
+docker compose build && docker compose up
 ```
 
 ## Credits
