@@ -2,16 +2,16 @@ FROM lopsided/archlinux
 
 ENV UID=1000
 ENV GID=1000
-ARG BITCOIN_USER=bitcoind
-
-RUN pacman -Syu --noconfirm 
-RUN pacman -S bitcoin-daemon --noconfirm
-RUN pacman -S sudo --noconfirm
 
 # bitcoind creates already a bitcoin user and group
 # so we name ours a bit different
-RUN groupadd --gid ${GID} ${BITCOIN_USER}
-RUN useradd --create-home -u ${UID} -g ${GID} ${BITCOIN_USER}
+ARG BITCOIN_USER=bitcoind
+
+# try to reduce size a bit but we are limited here since the archlinux base image is 400MB
+RUN pacman -Syu --noconfirm sudo bitcoin-daemon && \
+    pacman -Scc --noconfirm && \
+    groupadd --gid ${GID} ${BITCOIN_USER} && \
+    useradd --create-home -u ${UID} -g ${GID} ${BITCOIN_USER}
 
 # sets uid gid on runtime to specified user
 COPY entrypoint.sh /
