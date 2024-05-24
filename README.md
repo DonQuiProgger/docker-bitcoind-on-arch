@@ -67,7 +67,7 @@ docker compose build && docker compose up
 Ideas have been taken from many places.
 
 
-* https://github.com/lopsided98/archlinux  
+* https://github.com/lopsided98/archlinux-docker
     - Archlinux on arm  
 * https://github.com/ruimarinho/docker-bitcoin-core   
     - How to setup bitcoin core inside a docker
