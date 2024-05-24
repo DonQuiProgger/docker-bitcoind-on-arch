@@ -16,6 +16,11 @@ else # otherwise run given command
 	CMD=$1; shift
 fi
 
-# run as bitcoind user
 echo "CMD: $CMD ARGS: $@"
-exec sudo -u bitcoind "$CMD" "$@"
+if [[ "$CMD" =~ ^bitcoin ]]; then
+	echo "Run as bitcoind user"
+	exec sudo -u bitcoind "$CMD" "$@"
+else
+	echo "Run as root user"
+	exec "$CMD" "$@"
+fi
