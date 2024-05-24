@@ -1,7 +1,5 @@
 # Bitcoin-core in archlinux based docker image
   
-<b>NOTE: This is currently work in progress.</b>  
-  
 Containerized multiarch Bitcoin-core daemon (bitcoind) on archlinux.
   
 ## Tags
