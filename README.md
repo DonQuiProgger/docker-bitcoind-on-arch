@@ -1,5 +1,4 @@
-# Bitcoin-core in archlinux based docker image
-  
+# docker-bitcoind-on-arch
 Containerized multiarch Bitcoin-core daemon (bitcoind) on archlinux.
   
 ## Tags
@@ -70,7 +69,6 @@ Ideas have been taken from many places.
 
 * https://github.com/lopsided98/archlinux  
     - Archlinux on arm  
-    - Build setup
 * https://github.com/ruimarinho/docker-bitcoin-core   
     - How to setup bitcoin core inside a docker
 * https://github.com/archlinux/archlinux-docker
