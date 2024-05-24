@@ -2,8 +2,8 @@
 
 set -eu 
 
-ORG=donquiprogger
-IMAGE=bitcoin-core
+ORG=${1:-donquiprogger}
+IMAGE=${2:-bitcoind}
 
 # individual arch builds
 docker buildx build -f Dockerfile -t ${ORG}/${IMAGE}:armv7 --platform linux/arm/v7 --push .
