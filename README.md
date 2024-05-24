@@ -2,10 +2,8 @@
   
 <b>NOTE: This is currently work in progress.</b>  
   
-Containerized Bitcoin-core with archlinux. 
+Containerized multiarch Bitcoin-core daemon (bitcoind) on archlinux.
   
-Supported architectures: amd64, arm64v8, armv7.
-
 ## Tags
 
 |  Tag   |    Description     |
@@ -15,12 +13,11 @@ Supported architectures: amd64, arm64v8, armv7.
 | arm64v8 | platform specific build |
 | armv7   | platform specific build |
 
-
 ## Running the images
 
 The images are on Docker Hub.
 ```
-docker run --name bitcoind -ti donquiprogger/bitcoin-core:latest
+docker run --name bitcoind -ti donquiprogger/bitcoind:latest
 ```
 
 To communicate using rpc
@@ -34,7 +31,7 @@ Example config
 ```
 services:
   bitcoind:
-    image: donquiprogger/bitcoin-core
+    image: donquiprogger/bitcoind
     volumes:
       # bitcoin data directory
       - ./bitcoin:/home/bitcoind/.bitcoin
