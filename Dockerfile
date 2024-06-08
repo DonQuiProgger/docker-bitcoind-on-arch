@@ -20,8 +20,6 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 8332 8333 18332 18333 18443 18444 38333 38332
 
-RUN bitcoind -version | grep "Bitcoin Core version v${BITCOIN_VERSION}"
-
 WORKDIR /home/${BITCOIN_USER}
 VOLUME ["/home/${BITCOIN_USER}/.bitcoin"]
 CMD ["bitcoind"]
