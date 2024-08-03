@@ -7,11 +7,13 @@ ENV GID=1000
 # so we name ours a bit different
 ARG BITCOIN_USER=bitcoind
 
+# create user
+RUN groupadd --gid ${GID} ${BITCOIN_USER} && \
+    useradd --create-home -u ${UID} -g ${GID} ${BITCOIN_USER}
+
 # try to reduce size a bit but we are limited here since the archlinux base image is 400MB
 RUN pacman -Syu --noconfirm sudo bitcoin-daemon && \
-    pacman -Scc --noconfirm && \
-    groupadd --gid ${GID} ${BITCOIN_USER} && \
-    useradd --create-home -u ${UID} -g ${GID} ${BITCOIN_USER}
+    pacman -Scc --noconfirm
 
 # sets uid gid on runtime to specified user
 COPY entrypoint.sh /
