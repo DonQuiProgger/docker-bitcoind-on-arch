@@ -4,8 +4,8 @@ on:
   push:
     branches: main
   schedule:
-    # Run daily one hour after archlinux build
-    - cron:  '0 1 * * *'
+    # Run weekly one hour after archlinux build
+    - cron:  '0 1 * * 0'
 
 jobs:
   build:
